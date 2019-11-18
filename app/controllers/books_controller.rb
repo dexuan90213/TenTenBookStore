@@ -14,7 +14,7 @@ class BooksController < ApplicationController
       # flash[:notice] = "新增書本成功"
       redirect_to root_path, notice: "新增書本成功"
     else
-      render html: params
+      redirect_to new_book_path, notice: "新增失敗"
     end
   end
 
