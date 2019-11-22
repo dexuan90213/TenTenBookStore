@@ -1,8 +1,11 @@
 class BooksController < ApplicationController
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.all
-    # SELECT * FROM books
+  end
+
+  def show
   end
 
   def new
@@ -13,33 +16,16 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      # flash[:notice] = "新增書本成功"
       redirect_to root_path, notice: "新增書本成功"
     else
       render :new
-      # render file: '../views/books/new.html.erb' # 借 new.html.erb 這個檔案的畫面顯示出來
-      # render action: :new # 借 new.html.erb 這個檔案的畫面顯示出來
-
-      # redirect_to new_book_path, notice: "新增失敗"
     end
   end
 
   def edit
-    @book = Book.find_by(id: params[:id])
-    # redirect_to root_path, notice: '查無此書' unless @book
-    # @book = Book.find(params[:id]) # 只能接數字,只能找 id
-    
-    # begin
-    #   @book = Book.find(params[:id])
-    # rescue
-    #   redirect_to root_path ,notice: '查無此書'
-    # # select * form books where id = ?
-    @book = Book.find(params[:id]) # 在 ApplicationController 捕桌 rescue
   end
 
   def update
-    @book = Book.find(params[:id])
-
     if @book.update(book_params)
       redirect_to root_path, notice: '更新成功'
     else
@@ -48,9 +34,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    @book.destroy
+    redirect_to root_path, notice: '資料已刪除'
   end
 
   private
+
+  def find_book
+    @book = Book.find(params[:id])
+  end
 
   def book_params
     # strong parameters
