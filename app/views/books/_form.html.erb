@@ -10,22 +10,29 @@
 
   <div class="field">
     <%= form.label :cover_image, '封面', class: 'label'%>
-    
-    <%= image_tag book.cover_image if book.cover_image.attached? %>
 
-    <div class="file">
-      <label class="file-label">
-        <%= form.file_field :cover_image, class: 'file-input' %>
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload"></i>
-          </span>
-          <span class="file-label">
-            選擇檔案
-          </span>
-        </span>
-      </label>
+    <div class="columns">
+      <div class="column">
+        <%= form.file_field :cover_image, class: 'input' %>
+      </div>
+      <div class="column">
+        <%= image_tag book.cover_image if book.cover_image.attached? %>
+      </div>
     </div>
+
+    <!-- <div class="file"> -->
+    <!--   <label class="file&#45;label"> -->
+        <%# <%= form.file_field :cover_image, class: 'file-input' %>
+    <!--     <span class="file&#45;cta"> -->
+    <!--       <span class="file&#45;icon"> -->
+    <!--         <i class="fas fa&#45;upload"></i> -->
+    <!--       </span> -->
+    <!--       <span class="file&#45;label"> -->
+    <!--         選擇檔案 -->
+    <!--       </span> -->
+    <!--     </span> -->
+    <!--   </label> -->
+    <!-- </div> -->
 
 
   </div>
@@ -58,14 +65,25 @@
   </div>
 
   <div class="columns">
-    <div class="column field">
-      <%= form.label :isbn, 'ISBN',class: 'label' %>
-      <%= form.text_field :isbn, class: 'input' %>
+    <div class="column">
+      <div class="field">
+        <%= form.label :isbn, 'ISBN',class: 'label' %>
+        <%= form.text_field :isbn, class: 'input' %>
+      </div>
     </div>
 
-    <div class="column field">
-      <%= form.label :isbn13, 'ISBN-13', class: 'label' %>
-      <%= form.text_field :isbn13, class: 'input' %>
+    <div class="column">
+      <div class="field">
+        <%= form.label :isbn13, 'ISBN-13', class: 'label' %>
+        <%= form.text_field :isbn13, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="field">
+        <%= form.label :published_at, '上架日期', class: 'label' %>
+        <%= form.date_field :published_at, class: 'input' %>
+      </div>
     </div>
   </div>
 
@@ -74,12 +92,10 @@
     <%= form.label :on_sell, '是否上架?' %>
   </div>
 
-  <div class="field">
-    <%= form.label :published_at, '上架日期', class: 'label' %>
-    <%= form.date_field :published_at, class: 'input' %>
-  </div>
 
   <div class="field">
     <%= form.submit class: 'button' %>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'datepicker' %>
