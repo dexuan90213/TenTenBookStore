@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.all.where(on_sell: true).with_attached_cover_image
   end
 
   def show
@@ -52,7 +52,10 @@ class BooksController < ApplicationController
                                  :sell_price,
                                  :page_num,
                                  :isbn,
-                                 :isbn13)
+                                 :isbn13,
+                                 :cover_image,
+                                 :on_sell,
+                                 :published_at)
   end
 
 end
