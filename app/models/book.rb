@@ -6,5 +6,5 @@ class Book < ApplicationRecord
 
   has_one_attached :cover_image
 
-  belongs_to :publisher # publisher_id
+  belongs_to :publisher, optional: true # publisher_id
 end
