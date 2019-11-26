@@ -1,0 +1,105 @@
+<% if book.errors.any? %>
+  <ul>
+    <% book.errors.full_messages.each do |message|  %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(book) do |form| %>
+
+  <div class="field">
+    <%= form.label :cover_image, '封面', class: 'label'%>
+    <%= form.file_field :cover_image, class: 'input' %>
+    <%= cover_image_tag book, width: 300, height: 300 %>
+
+    <!-- <div class="file"> -->
+    <!--   <label class="file&#45;label"> -->
+        <%# <%= form.file_field :cover_image, class: 'file-input' %>
+    <!--     <span class="file&#45;cta"> -->
+    <!--       <span class="file&#45;icon"> -->
+    <!--         <i class="fas fa&#45;upload"></i> -->
+    <!--       </span> -->
+    <!--       <span class="file&#45;label"> -->
+    <!--         選擇檔案 -->
+    <!--       </span> -->
+    <!--     </span> -->
+    <!--   </label> -->
+    <!-- </div> -->
+  </div>
+
+  <div class="columns">
+    <div class="column is-8">
+      <div class="field">
+        <%= form.label :title, '標題', class: 'label'%>
+        <%= form.text_field :title, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="column is-4">
+      <div class="field">
+        <%= form.label :title, '出版社', class: 'label'%>
+        <div class="select is-fullwidth">
+          <%= form.collection_select :publisher_id, Publisher.available, :id, :name %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, '內容', class: 'label' %>
+    <%= form.text_area :description, class: 'textarea' %>
+  </div>
+
+  <div class="columns">
+    <div class="column field">
+      <%= form.label :list_price, '售價' , class: 'label' %>
+      <%= form.number_field :list_price, class: 'input' %>
+    </div>
+    
+    <div class="column field">
+      <%= form.label :sell_price, '特價', class: 'label' %>
+      <%= form.number_field :sell_price, class: 'input' %>
+    </div>
+
+    <div class="column field">
+      <%= form.label :page_num, '頁數', class: 'label' %>
+      <%= form.number_field :page_num, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <%= form.label :isbn, 'ISBN',class: 'label' %>
+        <%= form.text_field :isbn, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="field">
+        <%= form.label :isbn13, 'ISBN-13', class: 'label' %>
+        <%= form.text_field :isbn13, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="field">
+        <%= form.label :published_at, '上架日期', class: 'label' %>
+        <%= form.date_field :published_at, class: 'input' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :on_sell, class: 'checkbox'%>
+    <%= form.label :on_sell, '是否上架?' %>
+  </div>
+
+
+  <div class="field">
+    <%= form.submit class: 'button' %>
+  </div>
+<% end %>
+
+<%= javascript_pack_tag 'datepicker' %>
