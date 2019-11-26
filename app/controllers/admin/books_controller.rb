@@ -6,7 +6,7 @@ class Admin::BooksController < ApplicationController
 
   def index
     # @books = Book.where(on_sell: true).with_attached_cover_image
-    @books = Book.available.with_attached_cover_image.page(params[:page]).per(4)
+    @books = Book.available.with_attached_cover_image.page(params[:page]).per(6)
   end
 
   def show
