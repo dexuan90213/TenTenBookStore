@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for(book) do |form| %>
+<%= form_for([:admin, book]) do |form| %>
 
   <div class="field">
     <%= form.label :cover_image, '封面', class: 'label'%>

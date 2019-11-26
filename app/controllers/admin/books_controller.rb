@@ -1,5 +1,8 @@
 class Admin::BooksController < ApplicationController
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
+  layout 'backend'
 
   def index
     # @books = Book.where(on_sell: true).with_attached_cover_image
@@ -17,7 +20,7 @@ class Admin::BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to root_path, notice: "新增書本成功"
+      redirect_to admin_books_path, notice: "新增書本成功"
     else
       render :new
     end
@@ -28,7 +31,7 @@ class Admin::BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to edit_book_path(@book.id), notice: '更新成功'
+      redirect_to edit_admin_book_path(@book.id), notice: '更新成功'
     else
       render :edit
     end
@@ -36,7 +39,7 @@ class Admin::BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to root_path, notice: '資料已刪除'
+    redirect_to admin_books_path, notice: '資料已刪除'
   end
 
   private

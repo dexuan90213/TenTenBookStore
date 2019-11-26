@@ -1,6 +1,6 @@
 <h1 class="title"><i class="fas fa-book"></i> 書本列表</h1>
 
-<%= link_to(new_book_path, class: 'button is-primary') do %>
+<%= link_to(new_admin_book_path, class: 'button is-primary') do %>
   <span class="icon">
     <i class="fas fa-plus"></i>
   </span>
@@ -36,7 +36,7 @@
 
         <div class="card-footer">
           <div class="card-footer-item">
-            <%= link_to 'Edit', edit_book_path(book.id), class: 'button' %>
+            <%= link_to 'Edit', edit_admin_book_path(book.id), class: 'button' %>
           </div>
         </div>
       </div>
