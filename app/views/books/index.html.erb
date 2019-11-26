@@ -7,6 +7,8 @@
   <span>新增書本</span>
 <% end %>
 
+<%= paginate @books %>
+
 <div class="columns is-multiline">
   <% @books.each do |book| %>
     <div class="column is-4">
