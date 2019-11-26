@@ -10,15 +10,8 @@
 
   <div class="field">
     <%= form.label :cover_image, '封面', class: 'label'%>
-
-    <div class="columns">
-      <div class="column">
-        <%= form.file_field :cover_image, class: 'input' %>
-      </div>
-      <div class="column">
-        <%= cover_image_tag book %>
-      </div>
-    </div>
+    <%= form.file_field :cover_image, class: 'input' %>
+    <%= cover_image_tag book, width: 300, height: 300 %>
 
     <!-- <div class="file"> -->
     <!--   <label class="file&#45;label"> -->
@@ -33,13 +26,24 @@
     <!--     </span> -->
     <!--   </label> -->
     <!-- </div> -->
-
-
   </div>
 
-  <div class="field">
-    <%= form.label :title, '標題', class: 'label'%>
-    <%= form.text_field :title, class: 'input' %>
+  <div class="columns">
+    <div class="column is-8">
+      <div class="field">
+        <%= form.label :title, '標題', class: 'label'%>
+        <%= form.text_field :title, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="column is-4">
+      <div class="field">
+        <%= form.label :title, '出版社', class: 'label'%>
+        <div class="select is-fullwidth">
+          <%= form.collection_select :publisher_id, Publisher.available, :id, :name %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="field">
