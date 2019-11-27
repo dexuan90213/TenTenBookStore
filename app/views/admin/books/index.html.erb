@@ -1,46 +1,71 @@
-<h1 class="title"><i class="fas fa-book"></i> 書本列表</h1>
+<div class="columns">
+  <div class="column is-2">
+    <aside class="menu">
+      <p class="menu-label">
+        分類
+      </p>
+      <ul class="menu-list">
+        <li><a>Web 技術</a></li>
+        <li><a>版本控制</a></li>
+        <li><a>資料庫</a></li>
+      </ul>
 
-<%= link_to(new_admin_book_path, class: 'button is-primary') do %>
-  <span class="icon">
-    <i class="fas fa-plus"></i>
-  </span>
-  <span>新增書本</span>
-<% end %>
+      <p class="menu-label">
+        出版社
+      </p>
+      <ul class="menu-list">
+        <li><a>Ruby</a></li>
+        <li><a>Hello World</a></li>
+      </ul>
+    </aside>
+  </div>
 
-<div class="columns is-multiline">
-  <% @books.each do |book| %>
-    <div class="column is-4">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <%= cover_image_tag book, width: 300, height: 300, dummy_img: true %>
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+  <div class="column is-10">
+    <h1 class="title"><i class="fas fa-book"></i> 書本列表</h1>
+
+    <%= link_to(new_admin_book_path, class: 'button is-primary') do %>
+      <span class="icon">
+        <i class="fas fa-plus"></i>
+      </span>
+      <span>新增書本</span>
+    <% end %>
+
+    <div class="columns is-multiline">
+      <% @books.each do |book| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= cover_image_tag book, width: 300, height: 300, dummy_img: true %>
               </figure>
             </div>
-            <div class="media-content">
-              <p class="title is-4"><%= link_to book.title, book_path(book.id) %></p>
-              <p class="subtitle is-6">@johnsmith</p>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4"><%= link_to book.title, book_path(book.id) %></p>
+                  <p class="subtitle is-6">@johnsmith</p>
+                </div>
+              </div>
+
+              <div class="content">
+                <time datetime="2016-1-1">上架日期：<%= book.published_at %></time>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="card-footer-item">
+                <%= link_to 'Edit', edit_admin_book_path(book.id), class: 'button' %>
+              </div>
             </div>
           </div>
-
-          <div class="content">
-            <time datetime="2016-1-1">上架日期：<%= book.published_at %></time>
-          </div>
         </div>
-
-        <div class="card-footer">
-          <div class="card-footer-item">
-            <%= link_to 'Edit', edit_admin_book_path(book.id), class: 'button' %>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+    <%= paginate @books %>
+  </div>
 </div>
-<%= paginate @books %>
