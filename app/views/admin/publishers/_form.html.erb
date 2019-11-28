@@ -1,0 +1,47 @@
+<% if publisher.errors.any? %>
+  <% publisher.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+<%= form_for([:admin, publisher]) do |form| %>
+  <div class="field">
+    <%= form.label :name, '出版商名稱', class: 'label'%>
+    <div class="control">
+      <%= form.text_field :name, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel, '電話', class: 'label'%>
+    <div class="control">
+      <%= form.text_field :tel, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, '地址', class: 'label'%>
+    <div class="control">
+      <%= form.text_field :address, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :note, '備註', class: 'label'%>
+    <div class="control">
+      <%= form.text_area :note, class: 'textarea' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :online, '是否還在經營', class: 'label'%>
+    <div class="control">
+      <%= form.check_box :online, class: 'checkbox' %>
+    </div>
+  </div>
+
+   <div class="field">
+     <%= form.submit submit_value, class: 'button' %>
+   </div>
+<% end %>
