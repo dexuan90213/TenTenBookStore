@@ -2,12 +2,28 @@
 
 <%= link_to '新增出版商', new_admin_publisher_path, class: 'button is-primary' %>
 
-<ul>
-  <% @publishers.each do |publisher| %>
-    <li>
-      <%= link_to publisher.name, admin_publisher_path(publisher) %>
-      <%= link_to '編輯', edit_admin_publisher_path(publisher) %>
-      <%= link_to '刪除', admin_publisher_path(publisher), method: :delete, data: { confirm: '確定要刪除嗎？' } %>
-    </li>
+<table class="table is-hoverable">
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>電話</th>
+      <th>地址</th>
+      <th>經營狀況</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @publishers.each do |publisher| %>
+    <tr>
+      <td><%= link_to publisher.name, admin_publisher_path(publisher) %></td>
+      <td><%= publisher.tel %></td>
+      <td><%= publisher.address %></td>
+      <td><%= publisher.online %></td>
+      <td>
+        <%= link_to '編輯', edit_admin_publisher_path(publisher) %>
+        <%= link_to '刪除', admin_publisher_path(publisher), method: 'delete', data: { confirm: '確定要刪除嗎？' } %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
