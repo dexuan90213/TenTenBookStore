@@ -1,8 +1,5 @@
-class Admin::BooksController < ApplicationController
+class Admin::BooksController < Admin::BaseController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-
-  layout 'backend'
 
   def index
     # @books = Book.where(on_sell: true).with_attached_cover_image
