@@ -1,1 +1,4 @@
-<%= render 'books/list.html.erb', books: @books %>
+<div class="columns">
+  <%= render 'shared/frontend/menu', publishers: @publishers %>
+  <%= render 'books/list.html.erb', books: @books %>
+</div>
