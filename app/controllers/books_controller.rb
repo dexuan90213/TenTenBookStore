@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show]
+  layout 'book'
 
   def index
     # @books = Book.where(on_sell: true).with_attached_cover_image

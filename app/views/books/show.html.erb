@@ -1,1 +1,11 @@
 <h1 class="title">書名：<%= @book.title %></h1>
+
+<div class="card-image">
+  <figure class="image is-4by3">
+    <%= cover_image_tag @book, width: 300, height: 300, dummy_img: true %>
+  </figure>
+
+  <article class="book_description">
+    <%= simple_format(@book.description) %>
+  </article>
+</div>

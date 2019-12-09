@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tenten</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'shared/frontend/navbar' %>
+    <section class="section">
+     <div class="container">
+        <%= render 'shared/flash' if notice %>
+        <div class="columns">
+          <%= render 'shared/frontend/menu', publishers: Publisher.available %>
+          <div class="colum is-10">
+            <%= yield %>
+          </div>
+        </div>
+     </div>
+    </section>
+  </body>
+</html>
