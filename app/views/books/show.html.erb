@@ -1,11 +1,35 @@
 <h1 class="title">書名：<%= @book.title %></h1>
 
-<div class="card-image">
-  <figure class="image is-4by3">
-    <%= cover_image_tag @book, width: 300, height: 300, dummy_img: true %>
-  </figure>
+<figure class="image is-4by3">
+  <%= cover_image_tag @book, width: 300, height: 300, dummy_img: true %>
+</figure>
 
-  <article class="book_description">
-    <%= simple_format(@book.description) %>
-  </article>
-</div>
+<article class="book_description">
+  <%= simple_format(@book.description) %>
+</article>
+
+<section>
+  <%= form_with(model: @comment, url: comment_book_path(@book)) do |form|%>
+    <div class="field">
+      <%= form.label :title, '標題', class: 'label' %>
+      <%= form.text_field :title, class: 'input' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content, '內文', class: 'label' %>
+      <%= form.text_area :content, class: 'text_area' %>
+    </div>
+    <%= form.submit '送出', class: 'button is-primary' %>
+  <% end %>
+</section>
+
+<section>
+  <% @book.comments.each do |comment| %>
+      <article class="message is-dark">
+      <div class="message-body">
+        <%= comment.title %>
+        <%= comment.content %>
+      </div>
+    </article>
+  <% end %>
+</section>
