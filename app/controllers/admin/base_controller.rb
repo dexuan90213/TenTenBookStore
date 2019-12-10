@@ -5,7 +5,6 @@ class Admin::BaseController < ApplicationController
 
   private
   def permission_check!
-    redirect_to root_path, notice: '無法存取' if current_user.role != 'admin'
+    redirect_to root_path, notice: '無法存取' if user_signed_in? && current_user.role != 'admin'
   end
-
 end

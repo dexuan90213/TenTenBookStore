@@ -2,12 +2,20 @@
 
 <%= link_to '新增', new_admin_category_path, class: 'button is-primary' %>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <%= category.name %>
-      <%= link_to '編輯', edit_admin_category_path(category) %>
-      <%= link_to '刪除', admin_category_path(category), method: :delete, data: { confirm: '確定要刪除嗎？' } %>
-    </li>
-  <% end %>
-</ul>
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th scope="col">分類名稱</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category|  %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to '編輯', edit_admin_category_path(category), class: 'button' %>      <%= link_to '刪除', admin_category_path(category), method: :delete, data: { confirm: '確定要刪除嗎？' }, class: 'button is-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -15,7 +15,7 @@
      <div class="container">
         <%= render 'shared/flash' if notice %>
         <div class="columns">
-          <%= render 'shared/frontend/menu', publishers: Publisher.available %>
+          <%= render 'shared/frontend/menu', publishers: Publisher.available, categories: Category.all %>
           <div class="column is-10">
             <%= yield %>
           </div>

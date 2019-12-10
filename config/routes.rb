@@ -5,8 +5,9 @@ Rails.application.routes.draw do
       post :comment # POST /books/:id/comment, to 'books#comment'
     end
   end
+
   resources :publishers, only: [:show]
-  # resources :comments, only: [:create]
+  resources :categories, only: [:show]
   
   namespace :api do
     resources :books, only: [] do

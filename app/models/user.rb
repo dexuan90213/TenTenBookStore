@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :books, through: :favorites
 
-  def employee?
+  def self.employee?
     # ['staff', 'boss', 'admin'].include?(role)
     role.in? ['staff', 'boss', 'admin']
   end
