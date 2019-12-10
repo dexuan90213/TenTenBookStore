@@ -1,3 +1,0 @@
-<div class="columns">
-  <%= render 'books/list.html.erb', books: @books %>
-</div>

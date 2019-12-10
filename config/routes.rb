@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   end
   resources :publishers, only: [:show]
   # resources :comments, only: [:create]
+  
+  namespace :api do
+    resources :books, only: [] do
+      member do
+        post :favorite # /api/books/:id/favorite
+      end
+    end
+  end
 
   root 'books#index'
 
