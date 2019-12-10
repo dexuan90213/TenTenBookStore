@@ -14,4 +14,8 @@ class Book < ApplicationRecord
 
   # scopes
   scope :available, -> { where(on_sell: true).where('list_price > 0') }
+
+  def favorited_by?(u)
+    favorites.exists?(user: u)
+  end
 end

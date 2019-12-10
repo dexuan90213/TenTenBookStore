@@ -72,7 +72,7 @@
     <div class="column">
       <div class="field">
         <%= form.label :published_at, '上架日期', class: 'label' %>
-        <%= form.date_field :published_at, class: 'input' %>
+        <%= form.date_field :published_at, class: 'input', data: { controller: "datepicker" } %>
       </div>
     </div>
   </div>
