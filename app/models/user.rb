@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
 
+  has_many :favorites
+  has_many :books, through: :favorites
+
   def employee?
     # ['staff', 'boss', 'admin'].include?(role)
     role.in? ['staff', 'boss', 'admin']
