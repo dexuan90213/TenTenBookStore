@@ -12,20 +12,6 @@
     <%= form.label :cover_image, '封面', class: 'label'%>
     <%= form.file_field :cover_image, class: 'input' %>
     <%= cover_image_tag book, width: 300, height: 300 %>
-
-    <!-- <div class="file"> -->
-    <!--   <label class="file&#45;label"> -->
-        <%# <%= form.file_field :cover_image, class: 'file-input' %>
-    <!--     <span class="file&#45;cta"> -->
-    <!--       <span class="file&#45;icon"> -->
-    <!--         <i class="fas fa&#45;upload"></i> -->
-    <!--       </span> -->
-    <!--       <span class="file&#45;label"> -->
-    <!--         選擇檔案 -->
-    <!--       </span> -->
-    <!--     </span> -->
-    <!--   </label> -->
-    <!-- </div> -->
   </div>
 
   <div class="columns">
@@ -38,7 +24,7 @@
 
     <div class="column is-4">
       <div class="field">
-        <%= form.label :title, '出版社', class: 'label'%>
+        <%= form.label :publisher_id, '出版社', class: 'label'%>
         <div class="select is-fullwidth">
           <%= form.collection_select :publisher_id, Publisher.available, :id, :name %>
         </div>

@@ -6,6 +6,7 @@ class Book < ApplicationRecord
 
   # relationships
   belongs_to :publisher # publisher_id
+  belongs_to :category
   has_one_attached :cover_image
   has_many :comments
 

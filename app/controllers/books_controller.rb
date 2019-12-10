@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = @book.comments.order(id: :desc)
   end
 
   def comment
@@ -22,9 +23,13 @@ class BooksController < ApplicationController
     # @comment = current_user.comments.build(comment_params, book: @book)
 
     if @comment.save
-      redirect_to @book, notice: '留言成功'
+      # render :comment
+      respond_to do |format|
+        format.js { render 'comment' }
+      end
+      # redirect_to @book, notice: '留言成功'
     else
-      # 失敗
+      render js: 'alert("發生錯誤");'
     end
   end
 
