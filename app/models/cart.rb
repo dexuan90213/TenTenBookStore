@@ -20,12 +20,14 @@ class Cart
   end
 
   def total_price
-    # total = 0
-    # @items.each do |item|
-    #   total = total + item.total_price
-    # end
-    # return total
-    #
     @items.reduce(0) { |total, item| total + item.total_price }
+  end
+
+  def serialize
+    result = @items.map { |item|
+      { "product_id" => item.product_id, "quantity" => item.quantity }
+    }
+
+    { "items" => result }
   end
 end
