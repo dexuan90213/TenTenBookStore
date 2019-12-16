@@ -46,10 +46,10 @@ class Cart
         items << CartItem.new(item["product_id"], item["quantity"])
       end
 
-      Cart.new(items)
+      new(items)
     else
       # 新車
-      Cart.new
+      new
     end
   end
 end
