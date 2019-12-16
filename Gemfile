@@ -40,6 +40,8 @@ group :development, :test do
   gem 'foreman', '~> 0.86.0'
   gem 'hirb-unicode', '~> 0.0.5'
   gem 'rspec-rails', '~> 3.9'
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'faker', '~> 2.8', '>= 2.8.1'
 end
 
 group :development do
