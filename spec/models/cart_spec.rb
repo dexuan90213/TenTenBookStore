@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# 如果加了相同種類的商品到購物車裡，購買項目（CartItem）並不會增加，但商品的數量會改變。
 # 商品可以放到購物車裡，也可以再拿出來。
 # 每個 Cart Item 都可以計算它自己的金額（小計）。
 # 可以計算整台購物車的總消費金額。
@@ -12,6 +11,18 @@ RSpec.describe Cart, type: :model do
       cart = Cart.new
       cart.add_item(1)
       expect(cart.empty?).not_to be true
+    end
+
+    it "加了相同種類的商品到購物車裡，購買項目不會增加，商品的數量會改變" do
+      cart = Cart.new
+      cart.add_item(1)
+      cart.add_item(1)
+      cart.add_item(1)
+      cart.add_item(2)
+      cart.add_item(2)
+
+      expect(cart.items.count).to be 2
+      expect(cart.items.first.quantity).to be 3
     end
   end
 end
