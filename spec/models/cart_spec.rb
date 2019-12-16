@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# 可以計算整台購物車的總消費金額。
 # 特別活動可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百或滿額免運費）。
 
 RSpec.describe Cart, type: :model do
@@ -30,6 +29,21 @@ RSpec.describe Cart, type: :model do
 
       cart.add_item(book.id)
       expect(cart.items.first.product).to be_a Book
+    end
+
+    it "可以計算整台購物車的總消費金額" do
+      # Arrange
+      cart = Cart.new
+      
+      book1 = create(:book, sell_price: 50)
+      book2 = create(:book, sell_price: 100)
+
+      # Act
+      3.times { cart.add_item(book1.id) }
+      2.times { cart.add_item(book2.id) }
+
+      # Assert
+      expect(cart.total_price).to eq 350
     end
 
   end
