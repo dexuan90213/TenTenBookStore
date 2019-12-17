@@ -30,6 +30,8 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'paranoia', '~> 2.4', '>= 2.4.2'
+gem 'aasm', '~> 5.0', '>= 5.0.6'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
