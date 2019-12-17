@@ -41,11 +41,9 @@ class Cart
 
     if hash && hash["items"]
       # 還原
-      items = []
-      hash["items"].each do |item|
-        items << CartItem.new(item["product_id"], item["quantity"])
-      end
-
+      items = hash["items"].map { |item|
+        CartItem.new(item["product_id"], item["quantity"])
+      }
       new(items)
     else
       # 新車
