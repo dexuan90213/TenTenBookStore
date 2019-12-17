@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :books, through: :favorites
+  has_many :orders
 
   def self.employee?
     # ['staff', 'boss', 'admin'].include?(role)
@@ -24,5 +25,4 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
-
 end

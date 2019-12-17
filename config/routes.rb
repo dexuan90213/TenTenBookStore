@@ -5,6 +5,13 @@ Rails.application.routes.draw do
     collection do
       # /cart/2/add
       post :add, path: ':id/add'
+      get :checkout
+    end
+  end
+
+  resources :orders, only: [:index, :show, :create] do
+    member do
+      put :cancel # PUT /orders/2/cancel
     end
   end
 

@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:checkout]
+
   def add
     current_cart.add_item(params[:id])
     session['cart9527'] = current_cart.serialize
@@ -7,6 +9,10 @@ class CartsController < ApplicationController
   end
 
   def show
+  end
+
+  def checkout
+    @order = Order.new
   end
 
   def destroy
