@@ -1,7 +1,7 @@
 # OAuth
-google_app_id: 'your app id'
-google_app_secret: 'your app secret'
+google_app_id: 'YOUR APP ID'
+google_app_secret: 'YOUR APP SECRET'
 
-# production:
-#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
-#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+braintree_merchant_id: 'YOUR BRAINTREE_MERCHANT_ID'
+braintree_public_key: 'YOUR BRAINTREE_PUBLIC_KEY'
+braintree_private_key: 'YOUR BRAINTREE_PRIVATE_KEY'

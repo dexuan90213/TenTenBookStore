@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       put :cancel # PUT /orders/2/cancel
       get :pay
+      post :paid
     end
   end
 
