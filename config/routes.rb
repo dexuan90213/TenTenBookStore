@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create] do
     member do
       put :cancel # PUT /orders/2/cancel
+      get :pay
     end
   end
 
