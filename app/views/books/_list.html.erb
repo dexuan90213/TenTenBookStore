@@ -30,8 +30,8 @@
         </div>
 
         <div class="card-footer">
-          <div class="card-footer-item">
-            <%= link_to '放到購物車', add_cart_path(book), method: :post, class: 'button' %>
+          <div class="card-footer-item" data-controller="book"> 
+            <%= link_to '放到購物車', add_cart_path(book), method: :post, remote: true, data: { action: "book#addCart" }, class: 'button' %>
           </div>
         </div>
       </div>

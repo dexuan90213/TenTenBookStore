@@ -2,7 +2,6 @@ import braintree from 'braintree-web-drop-in'
 
 document.addEventListener('turbolinks:load', () => {
   let container = document.querySelector('#dropin-container')
-  console.log(container)
 
   if (container) {
     let button = document.querySelector('#submit-button')

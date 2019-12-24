@@ -17,8 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-
-  resources :books, only: [:index, :show] do
+resources :books, path: 'asdf', only: [:index, :show] do
     member do
       post :comment # POST /books/:id/comment, to 'books#comment'
     end
@@ -40,7 +39,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :publishers
     resources :categories
-    resources :books # /admin/books
+    resources :books, path: 'asdasSFsfsffs' # /admin/books
     root 'books#index' # /admin/
   end
 end
