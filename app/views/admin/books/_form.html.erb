@@ -1,17 +1,17 @@
-<% if fuck.errors.any? %>
+<% if book.errors.any? %>
   <ul>
-    <% fuck.errors.full_messages.each do |message|  %>
+    <% book.errors.full_messages.each do |message|  %>
       <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
 
-<%= form_for([:admin, fuck]) do |form| %>
+<%= form_for([:admin, book]) do |form| %>
 
   <div class="field">
     <%= form.label :cover_image, '封面', class: 'label'%>
     <%= form.file_field :cover_image, class: 'input' %>
-    <%= cover_image_tag fuck, width: 300, height: 300 %>
+    <%= cover_image_tag book, width: 300, height: 300 %>
   </div>
 
   <div class="columns">
